@@ -22,3 +22,7 @@ def decode_one(chunk: str) -> str:
 def bitmask(chunk: str) -> int:
     binary_string = "".join(['1' if x == x.upper() else '0' for x in chunk])
     return int(binary_string,2)
+
+if __name__ == "__main__":  # pragma: no cover
+    with open("../message.txt") as f:
+        print(decode(f.read()))

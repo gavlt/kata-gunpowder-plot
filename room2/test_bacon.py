@@ -1,6 +1,5 @@
 import pytest
 import bacon
-import encode
 
 @pytest.mark.parametrize(
     "expected, message",

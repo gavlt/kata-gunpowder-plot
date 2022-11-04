@@ -30,7 +30,7 @@ mapping = {
 
 
 def decode(message: str) -> str:
-    formatted_message = message.replace(" ", "").replace(",", "").replace(".", "").replace("'", "").replace(";", "") # todo improve this replacem
+    formatted_message = message.replace(" ", "").replace(",", "").replace(".", "").replace("'", "").replace(";", "") # todo improve this replace
 
     decoded_message = "".join(["1" if l.isupper() else "0" for l in formatted_message])
     result = ""
@@ -40,4 +40,6 @@ def decode(message: str) -> str:
 
     return result
 
-print(decode("My loRd, OUT of the LovE i bEar tO SomE OF YoUr friEnds, i haVe a CAre Of yOur PreserVATion. THeRefORE I WoulD aDVIse YOU, As YOU tEndEr yoUr life, TO DEvIsE soME exCUSe To shIft YoUR aTteNDANcE aT ThIS PaRliAMENt; FoR gOD anD man HatH ConCURREd To puNiSh THE wIcKedNess OF ThIs tIME. aNd tHInk NOT slIghTly oF THiS adVErtisemenT, but rETiRE YoUrselF inTO YouR CoUNtrY whERE YoU may ExpeCt the eVenT In SAFeTy. foR ThoUgH ThErE be NO apPEArANCe oF Any stir, yEt i SaY ThEy sHALL reCeiVe a tErriBlE Blow THiS paRliAmENT; and YET tHEy SHAlL nOt SEe Who hUrTs them. THis cOUNSel IS NOt To Be cONdeMNEd BECauSE it may do You GoOD aNd CaN Do yOu no hARm; FOr tHE dANGeR iS paSsed AS SoOn as you hAVe BurnT THE lEtteR. AnD i HopE God wILl Give YoU the grAcE To mAkE gooD usE of It, TO WHOSE HOLY PROTECTION I COMMEND YOU."))
+if __name__ == "__main__":  # pragma: no cover
+    with open("../message.txt") as f:
+        print(decode(f.read()))

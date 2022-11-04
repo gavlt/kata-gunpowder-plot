@@ -34,16 +34,20 @@ cipher = {
 def clean(s: str) -> str:
     return ''.join(c for c in s if c.isalpha())
 
+
 def chunk(s: str) -> Sequence[str]:
     chunk_size = 5
     for i in range(0, len(s), chunk_size):
         yield s[i : i + chunk_size]
 
+
 def hash_chunk(chunk: str) -> str:
     return "".join("1" if s.isupper() else "0" for s in chunk)
 
+
 def decode_character(key: str) -> str:
     return cipher.get(key, "")
+
 
 def _decode(message: str) -> str:
     cleaned_msg = clean(message)    
@@ -58,6 +62,6 @@ def decode(message: str) -> str:
     return "".join(_decode(message))
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     with open("../message.txt") as f:
         print(decode(f.read()))
