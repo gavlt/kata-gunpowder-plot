@@ -1,4 +1,6 @@
 import pytest
+from hypothesis import given
+from hypothesis.strategies import text
 
 import encode
 
@@ -42,3 +44,13 @@ def test_encode_value_error():
     carrier = "The quick brown fox jumps over the lazy dogs, gamboling in the fields where the shepherds keep watch"
     with pytest.raises(ValueError):
         encode.g(secret, carrier)
+
+
+@given(text(), text())
+def test_encode_prop(message, carrier):
+    try:
+        encoded = encode.g(message, carrier)
+    except ValueError:
+        assert sum(c.isalpha() for c in carrier) < len(message) * 5
+    else:
+        assert encoded.upper() == carrier.upper()
